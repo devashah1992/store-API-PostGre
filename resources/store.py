@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.store import StoreModel
+from flask import request
 
 class Store(Resource):
     def get(self, name):
@@ -30,3 +31,15 @@ class Store(Resource):
 class StoreList(Resource):
     def get(self):
         return {'stores': [store.json() for store in StoreModel.query.all()]}
+
+
+class FilterStore(Resource):
+    TABLE_NAME = 'items'
+
+
+    def get(self):
+        item_name = request.args.get('item_name')
+        store = StoreModel.find_by_name(item_name)
+        if store:
+            return store.json()
+        return {'message': 'Store not found'}, 404

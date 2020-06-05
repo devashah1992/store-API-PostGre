@@ -7,7 +7,7 @@ from flask_jwt import JWT
 from security import authenticate, identity
 from resources.user import UserRegister
 from resources.item import Item, ItemList
-from resources.store import Store, StoreList
+from resources.store import Store, StoreList, FilterStore
 
 app = Flask(__name__)
 
@@ -24,6 +24,7 @@ api.add_resource(Store, '/shopping/store/<string:name>')
 api.add_resource(Item, '/shopping/item/<string:name>')
 api.add_resource(ItemList, '/shopping/items')
 api.add_resource(StoreList, '/shopping/stores')
+api.add_resource(FilterStore, '/shopping/storeName')
 
 api.add_resource(UserRegister, '/register')
 
