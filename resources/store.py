@@ -34,12 +34,10 @@ class StoreList(Resource):
 
 
 class FilterStore(Resource):
-    TABLE_NAME = 'items'
-
 
     def get(self):
-        item_name = request.args.get('item_name')
-        store = StoreModel.find_by_name(item_name)
+        store_name = request.args.get('store_name')
+        store = StoreModel.find_by_name(store_name)
         if store:
             return store.json()
         return {'message': 'Store not found'}, 404
