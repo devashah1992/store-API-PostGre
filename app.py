@@ -20,10 +20,10 @@ api = Api(app)
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
-api.add_resource(Store, 'shopping/store/<string:name>')
-api.add_resource(Item, 'shopping/item/<string:name>')
-api.add_resource(ItemList, 'shopping/items')
-api.add_resource(StoreList, 'shopping/stores')
+api.add_resource(Store, '/shopping/store/<string:name>')
+api.add_resource(Item, '/shopping/item/<string:name>')
+api.add_resource(ItemList, '/shopping/items')
+api.add_resource(StoreList, '/shopping/stores')
 
 api.add_resource(UserRegister, '/register')
 
